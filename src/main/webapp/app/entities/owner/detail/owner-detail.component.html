@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="owner">
+      <h2 data-cy="ownerDetailsHeading"><span jhiTranslate="furryMatchApp.owner.detail.title">Owner</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ owner.user_id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ owner.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.secondName">Second Name</span></dt>
+        <dd>
+          <span>{{ owner.secondName }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.firstLastName">First Last Name</span></dt>
+        <dd>
+          <span>{{ owner.firstLastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.secondLastName">Second Last Name</span></dt>
+        <dd>
+          <span>{{ owner.secondLastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ owner.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.photo">Photo</span></dt>
+        <dd>
+          <span>{{ owner.photo }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.identityNumber">Identity Number</span></dt>
+        <dd>
+          <span>{{ owner.identityNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.address">Address</span></dt>
+        <dd>
+          <span>{{ owner.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.province">Province</span></dt>
+        <dd>
+          <span>{{ owner.province }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.canton">Canton</span></dt>
+        <dd>
+          <span>{{ owner.canton }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.district">District</span></dt>
+        <dd>
+          <span>{{ owner.district }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.otp">Otp</span></dt>
+        <dd>
+          <span>{{ owner.otp }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.createdAt">Created At</span></dt>
+        <dd>
+          <span>{{ owner.createdAt | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.updatedAt">Updated At</span></dt>
+        <dd>
+          <span>{{ owner.updatedAt | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.owner.user">User</span></dt>
+        <dd>
+          <span>{{ owner.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/owner', owner.user_id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

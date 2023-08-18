@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-match-heading" data-cy="MatchCreateUpdateHeading" jhiTranslate="furryMatchApp.match.home.createOrEditLabel">
+        Create or edit a Match
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.match.notifyMatch" for="field_notifyMatch">Notify Match</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="notifyMatch"
+            id="field_notifyMatch"
+            data-cy="notifyMatch"
+            formControlName="notifyMatch"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.match.dateMatch" for="field_dateMatch">Date Match</label>
+          <div class="input-group">
+            <input
+              id="field_dateMatch"
+              data-cy="dateMatch"
+              type="text"
+              class="form-control"
+              name="dateMatch"
+              ngbDatepicker
+              #dateMatchDp="ngbDatepicker"
+              formControlName="dateMatch"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateMatchDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.match.contract" for="field_contract">Contract</label>
+          <select
+            class="form-control"
+            id="field_contract"
+            data-cy="contract"
+            name="contract"
+            formControlName="contract"
+            [compareWith]="compareContract"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="contractOption" *ngFor="let contractOption of contractsCollection">{{ contractOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.match.firstLiked" for="field_firstLiked">First Liked</label>
+          <select
+            class="form-control"
+            id="field_firstLiked"
+            data-cy="firstLiked"
+            name="firstLiked"
+            formControlName="firstLiked"
+            [compareWith]="compareLikee"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="likeeOption" *ngFor="let likeeOption of likeesSharedCollection">{{ likeeOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.match.secondLiked" for="field_secondLiked">Second Liked</label>
+          <select
+            class="form-control"
+            id="field_secondLiked"
+            data-cy="secondLiked"
+            name="secondLiked"
+            formControlName="secondLiked"
+            [compareWith]="compareLikee"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="likeeOption" *ngFor="let likeeOption of likeesSharedCollection">{{ likeeOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

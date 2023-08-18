@@ -1,0 +1,65 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323005702",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "search_criteria",
+  "fields": [
+    {
+      "fieldName": "filterType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "breed",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tradePups",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sex",
+      "fieldType": "Sex",
+      "fieldValues": "Hembra,Macho"
+    },
+    {
+      "fieldName": "pedigree",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tradeMoney",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "provice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "canton",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "district",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objective",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SearchCriteria",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "pet",
+      "otherEntityRelationshipName": "searchCriteria",
+      "relationshipName": "pet",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

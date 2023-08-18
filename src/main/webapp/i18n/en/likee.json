@@ -1,0 +1,28 @@
+{
+  "furryMatchApp": {
+    "likee": {
+      "home": {
+        "title": "Likees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Likee",
+        "createOrEditLabel": "Create or edit a Likee",
+        "notFound": "No Likees found"
+      },
+      "created": "A new Likee is created with identifier {{ param }}",
+      "updated": "A Likee is updated with identifier {{ param }}",
+      "deleted": "A Likee is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Likee {{ id }}?"
+      },
+      "detail": {
+        "title": "Likee"
+      },
+      "id": "ID",
+      "likeState": "Like State",
+      "firstMatch": "First Match",
+      "secondMatch": "Second Match",
+      "firstPet": "First Pet",
+      "secondPet": "Second Pet"
+    }
+  }
+}

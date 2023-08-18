@@ -1,0 +1,44 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323010002",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "contract",
+  "fields": [
+    {
+      "fieldName": "tradeMoney",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tradePups",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pedigree",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "otherNotes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contractDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Contract",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "contract",
+      "ownerSide": false,
+      "relationshipName": "match",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

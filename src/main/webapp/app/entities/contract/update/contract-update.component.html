@@ -1,0 +1,99 @@
+<div class="cnt-princ" xmlns="http://www.w3.org/1999/html">
+  <div class="cnt-sec">
+    <h1 class="title">Contratos</h1>
+    <div class="secondary-text">
+      En FurryMatch nos tomamos en serio tu seguridad y la de tus mascotas. <br />Es por eso que en esta sección tenés la posibilidad de
+      crear contratos que podrás personalizar antes de realizar el cruce de tu mascota.
+    </div>
+  </div>
+  <div>
+    <div class="wrapper">
+      <div class="profile-wrapper">
+        <div class="text-profile">Mi contrato con {{ pet?.name }}</div>
+        <img src="{{ petImages[0].photoUrl }}" class="img-profile" />
+      </div>
+      <div class="inputs-wrapper">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+          <div>
+            <div class="row mb-3">
+              <label class="form-label" for="field_tradeMoney">Sobre negociar dinero:</label>
+              <div class="input-wrapper">
+                <textarea
+                  type="text"
+                  class="form-controll"
+                  name="tradeMoney"
+                  id="field_tradeMoney"
+                  data-cy="tradeMoney"
+                  formControlName="tradeMoney"
+                  placeholder="Describa los mutuos acuerdos a los que llegaron sobre dinero de por medio en la negociación. Si desea, puede dejar el espacio en blanco y se definirán los criterios sugeridos por Furry Match."
+                >
+                </textarea>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="form-label" for="field_tradePups">Sobre negociar las crias:</label>
+              <div class="input-wrapper">
+                <textarea
+                  type="text"
+                  class="form-controll"
+                  name="tradePups"
+                  id="field_tradePups"
+                  data-cy="tradePups"
+                  formControlName="tradePups"
+                  placeholder="Describa los mutos acuerdos a los que llegaron sobre la repartición de las crias.
+Si desea, puede dejar el espacio en blanco y se definirán los criterios sugeridos por Furry Match."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="form-label" for="field_pedigree">Sobre el pedigrí de las mascotas:</label>
+              <div class="input-wrapper">
+                <textarea
+                  type="text"
+                  class="form-controll"
+                  name="pedigree"
+                  id="field_pedigree"
+                  data-cy="pedigree"
+                  formControlName="pedigree"
+                  placeholder="Si las mascotas cuentan con pedigrí, describa todos los detalles en esta sección.
+Si desea, puede dejar el espacio en blanco y se definirán los criterios sugeridos por Furry Match."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="form-label" for="field_otherNotes">Sobre otras condiciones:</label>
+              <div class="input-wrapper">
+                <textarea
+                  type="text"
+                  class="form-controll"
+                  name="otherNotes"
+                  id="field_otherNotes"
+                  data-cy="otherNotes"
+                  formControlName="otherNotes"
+                  placeholder="Describa los acuerdos adiciones a los que llegaron.
+Si desea, puede dejar el espacio en blanco y se definirán los criterios sugeridos por Furry Match."
+                >
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-wrapper">
+            <button
+              type="submit"
+              id="save-entity"
+              data-cy="entityCreateSaveButton"
+              [disabled]="editForm.invalid || isSaving"
+              class="btn-blue btn"
+            >
+              Generar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

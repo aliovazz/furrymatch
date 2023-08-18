@@ -1,0 +1,33 @@
+<div class="cnt-princ">
+  <div class="cnt-sec">
+    <div>
+      <img src="../content/images/blue_logo.png" class="img-logo-blue" />
+    </div>
+    <h1 class="title">¡Estas son tus mascotas registradas!</h1>
+    <div>
+      Haz click en la foto de la mascota con la que deseas navegar en <b>FurryMatch.</b><br />Recuerda que siempre podrás cambiar de mascota
+      en cualquier momento.
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="login-wrapper">
+        <div *ngFor="let pet of pets" (click)="selectPet(pet.id)">
+          <div *ngFor="let photo of pet.photos; first as isFirst">
+            <div *ngIf="isFirst">
+              <img src="{{ photo.photoUrl }}" class="img-objective" />
+              <div class="txt-pet">
+                <div class="objective-text">
+                  {{ pet.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title-txt">¿Deseas registrar a una nueva mascota?</div>
+    <div>¡No hay problema! Hacé click para registrarla.</div>
+    <button [routerLink]="['/pet/new']" class="btn-blue btn">Registrar nueva mascota</button>
+  </div>
+</div>

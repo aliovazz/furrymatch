@@ -1,0 +1,50 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323005902",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "jhi_match",
+  "fields": [
+    {
+      "fieldName": "notifyMatch",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateMatch",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Match",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "contract",
+      "otherEntityRelationshipName": "match",
+      "ownerSide": true,
+      "relationshipName": "contract",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "chat",
+      "otherEntityRelationshipName": "match",
+      "relationshipName": "chat",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "likee",
+      "otherEntityRelationshipName": "firstMatch",
+      "relationshipName": "firstLiked",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "likee",
+      "otherEntityRelationshipName": "secondMatch",
+      "relationshipName": "secondLiked",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

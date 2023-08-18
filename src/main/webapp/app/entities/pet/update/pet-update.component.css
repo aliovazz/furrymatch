@@ -1,0 +1,222 @@
+.title {
+  font: var(--typo-header);
+  color: var(--clr-orange);
+  margin-top: var(--margin-big);
+}
+
+.cnt-princ {
+  text-align: center;
+}
+
+.login-wrapper {
+  margin-top: var(--margin-md);
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper-sec {
+  display: flex;
+  max-width: 50%;
+  justify-content: space-around;
+}
+
+.cnt-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-small);
+  margin-bottom: var(--margin-small);
+}
+.cnt-row1,
+.cnt-row2,
+.cnt-row3,
+.cnt-orange-row1,
+.cnt-orange-row2,
+.cnt-orange-row3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: var(--margin-small);
+  margin-bottom: var(--margin-small);
+}
+
+.dropdown {
+  font: var(--typo-global);
+  color: var(--clr-grey);
+  border-color: #e8e6ea !important;
+}
+
+.form-control {
+  font: var(--typo-global);
+  border-color: var(--clr-grey);
+}
+
+.inp-desc {
+  height: 58px !important;
+  width: 590px !important;
+}
+
+.inp-ammount {
+  border-color: white;
+}
+
+.btn-blue {
+  /*margin-top: var(--margin-md);*/
+  padding: 8px 25px;
+  background-color: var(--clr-blue);
+  font: var(--typo-button);
+  color: var(--clr-white);
+  transition: background-color ease-in 300ms;
+}
+
+.btn-blue:hover {
+  background-color: var(--clr-black);
+}
+
+.profile-pic {
+  margin-top: var(--margin-md-small);
+  display: flex;
+  justify-content: center;
+}
+
+#uploadBtn {
+  color: var(--clr-grey);
+  font: var(--typo-global);
+}
+
+input.ng-touched.ng-invalid {
+  border-color: var(--clr-orange);
+}
+
+.cnt-orange {
+  background-color: var(--clr-palid-orange);
+  padding-top: var(--margin-md-small);
+  border-radius: 15px !important;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cnt-orange-row1,
+.cnt-orange-row2,
+.cnt-orange-row3 {
+  gap: var(--margin-small);
+  margin-bottom: var(--margin-md-small);
+}
+
+.cbox-wrapper {
+  background-color: var(--clr-white);
+}
+
+mark.txt-disc-orange {
+  background-color: transparent !important;
+  color: var(--clr-orange);
+  font: var(--typo-button);
+}
+
+.txt-disc {
+  color: var(--clr-black);
+  font: var(--typo-global);
+}
+
+.cnt-orange-row1 {
+  padding: 0 100px 0 100px;
+}
+
+.profile-pic {
+  margin-top: var(--margin-md-small);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-pic-div {
+  margin-top: var(--margin-min);
+  height: 150px;
+  width: 750px;
+  /*border-radius: 15%;*/
+  cursor: pointer;
+}
+
+.delete-text {
+  color: #3381f6;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 250px; /* Cambia el valor para ajustar el ancho */
+  height: 150px; /* Cambia el valor para ajustar la altura */
+  overflow: hidden;
+  text-align: center;
+}
+
+.img-preview {
+  object-fit: cover; /* Esto hará que la imagen se ajuste al contenedor manteniendo su relación de aspecto */
+  width: 100%;
+  height: 100%;
+}
+
+.cnt-txt-upd {
+  display: flex;
+  justify-content: center;
+  margin: var(--margin-md-small) 0 var(--margin-md) 0;
+}
+
+.lbl-txt {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 0px;
+}
+
+input:disabled,
+select:disabled {
+  background-color: var(--clr-palid-orange);
+  border-color: var(--clr-orange);
+}
+
+.cbox-wrapper:has(input:disabled) {
+  background-color: var(--clr-palid-orange);
+}
+
+.disabled-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.disabled-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.disabled-tooltip:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+}

@@ -1,0 +1,39 @@
+{
+  "furryMatchApp": {
+    "owner": {
+      "home": {
+        "title": "Owners",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Owner",
+        "createOrEditLabel": "Create or edit a Owner",
+        "notFound": "No Owners found"
+      },
+      "created": "A new Owner is created with identifier {{ param }}",
+      "updated": "A Owner is updated with identifier {{ param }}",
+      "deleted": "A Owner is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Owner {{ id }}?"
+      },
+      "detail": {
+        "title": "Owner"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "secondName": "Second Name",
+      "firstLastName": "First Last Name",
+      "secondLastName": "Second Last Name",
+      "phoneNumber": "Phone Number",
+      "photo": "Photo",
+      "identityNumber": "Identity Number",
+      "address": "Address",
+      "province": "Province",
+      "canton": "Canton",
+      "district": "District",
+      "otp": "Otp",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "user": "User",
+      "pet": "Pet"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.login-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 3% 10% 5% 10%;
+}
+
+.img-objective {
+  width: 150px;
+  height: 230px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.txt-pet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 32px;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.objective-text {
+  font: var(--typo-title-small);
+}
+
+.title-txt {
+  font: var(--typo-title-small);
+  color: var(--clr-orange);
+}

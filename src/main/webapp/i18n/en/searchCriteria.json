@@ -1,0 +1,34 @@
+{
+  "furryMatchApp": {
+    "searchCriteria": {
+      "home": {
+        "title": "Search Criteria",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Search Criteria",
+        "createOrEditLabel": "Create or edit a Search Criteria",
+        "notFound": "No Search Criteria found"
+      },
+      "created": "A new Search Criteria is created with identifier {{ param }}",
+      "updated": "A Search Criteria is updated with identifier {{ param }}",
+      "deleted": "A Search Criteria is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Search Criteria {{ id }}?"
+      },
+      "detail": {
+        "title": "Search Criteria"
+      },
+      "id": "ID",
+      "filterType": "Filter Type",
+      "breed": "Breed",
+      "tradePups": "Trade Pups",
+      "sex": "Sex",
+      "pedigree": "Pedigree",
+      "tradeMoney": "Trade Money",
+      "provice": "Provice",
+      "canton": "Canton",
+      "district": "District",
+      "objective": "Objective",
+      "pet": "Pet"
+    }
+  }
+}

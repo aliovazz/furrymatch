@@ -1,0 +1,120 @@
+.cnt-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cnt-princ,
+.cnt-sec {
+  text-align: center;
+}
+
+.img-logo-index {
+  margin-top: var(--margin-md);
+  max-width: 60%;
+  max-height: 125px;
+  /*object-fit: cover;*/
+}
+
+.cnt-imgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--margin-small);
+  justify-items: center;
+}
+
+.cnt-imgs {
+  margin-top: var(--margin-md);
+  margin-bottom: var(--margin-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-small);
+}
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-small-index {
+  width: 120px;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.img-med-index {
+  width: 140px;
+  height: 240px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.img-big-index {
+  width: 175px;
+  height: 300px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: var(--margin-min);
+  font: var(--typo-title);
+  color: var(--clr-blue);
+  /*font-size: var(--typo-header);*/
+}
+
+.text-cuenta,
+.text-link {
+  font: var(--typo-global);
+  margin: 5px !important;
+}
+
+.text-link {
+  font-weight: bold;
+  color: var(--clr-orange);
+}
+
+.text {
+  font: var(--typo-global);
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.cnt-ingresa {
+  //margin-top: var(--margin-min);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--margin-min);
+}
+
+.last-element {
+  margin-bottom: 65px; /* 50px de altura del footer + 15px de margen */
+}
+
+.btn-blue {
+  margin-top: var(--margin-md);
+  margin-bottom: var(--margin-md-small);
+  padding: 8px 25px;
+  background-color: var(--clr-blue);
+  font: var(--typo-button);
+  color: var(--clr-white);
+  transition: background-color ease-in 300ms;
+}
+
+.btn-blue:hover {
+  background-color: var(--clr-orange);
+}
+
+@media only screen and (max-device-width: 668px) {
+  .img-small-index,
+  .img-med-index {
+    display: none;
+  }
+}

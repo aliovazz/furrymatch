@@ -1,0 +1,246 @@
+<div class="cnt-princ">
+  <h1 class="title">Mi mascota</h1>
+  <div>
+    <div class="profile-pic">
+      <div *ngIf="!update">
+        <ngx-dropzone *ngIf="petFiles.length <= maxPhotos" (change)="onSelect($event)" [multiple]="true" class="profile-pic-div">
+          <ngx-dropzone-label>Arrastrá o seleccioná<br />una foto</ngx-dropzone-label>
+
+          <ngx-dropzone-image-preview
+            *ngFor="let file of petFiles; let index = index"
+            [file]="file"
+            [removable]="true"
+            (removed)="onRemove({ file: $event })"
+          ></ngx-dropzone-image-preview>
+        </ngx-dropzone>
+        <button (click)="onUpload()" class="btn-blue">Subir</button>
+      </div>
+
+      <div *ngIf="update">
+        <div class="gallery-container">
+          <img
+            src="../content/images/btn_left.png"
+            class="gallery-prev-left"
+            (click)="activeImageIndex = (activeImageIndex - 1 + petFiles.length) % petFiles.length"
+            [style.pointer-events]="activeImageIndex === 0 ? 'none' : 'auto'"
+            [style.opacity]="activeImageIndex === 0 ? '0.5' : '1'"
+          />
+          <div class="image-wrapper">
+            <ng-container *ngFor="let file of petFiles; let index = index">
+              <ngx-dropzone-image-preview
+                class="img-preview"
+                *ngIf="index === activeImageIndex"
+                [file]="file"
+                [removable]="true"
+                (removed)="onRemoveFromDB({ file: $event })"
+              ></ngx-dropzone-image-preview>
+            </ng-container>
+          </div>
+          <img
+            src="../content/images/btn_right.png"
+            class="gallery-next-right"
+            (click)="activeImageIndex = (activeImageIndex + 1) % petFiles.length"
+            [style.pointer-events]="activeImageIndex === petFiles.length - 1 ? 'none' : 'auto'"
+            [style.opacity]="activeImageIndex === petFiles.length - 1 ? '0.5' : '1'"
+          />
+        </div>
+        <div class="cnt-txt-upd">
+          <label class="lbl-txt">
+            <span class="line-1">Si deseás eliminar alguna foto de tu mascota,</span>
+            <span class="line-2">presiona el botón "x"</span>
+          </label>
+        </div>
+
+        <ngx-dropzone *ngIf="petUpdateFiles.length <= maxPhotos" (change)="onSelect($event)" [multiple]="true" class="profile-pic-div">
+          <ngx-dropzone-label>Arrastrá o seleccioná<br />tus nuevas fotos aquí</ngx-dropzone-label>
+
+          <ngx-dropzone-image-preview
+            *ngFor="let file of petUpdateFiles; let index = index"
+            [file]="file"
+            [removable]="true"
+            (removed)="onRemove({ file: $event })"
+          ></ngx-dropzone-image-preview>
+        </ngx-dropzone>
+        <button (click)="onUpload()" class="btn-blue">Subir</button>
+      </div>
+    </div>
+
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <div class="login-wrapper">
+        <div class="wrapper-sec">
+          <div class="cnt-inputs">
+            <div class="cnt-row1">
+              <div class="cnt-txt">
+                <label class="lbl-txt">Nombre</label>
+                <input type="text" class="form-control inp-txt" name="name" id="field_name" data-cy="name" formControlName="name" />
+                <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                  <small class="form-text text-danger alert-txt" *ngIf="editForm.get('name')?.errors?.required">
+                    Este campo es requerido
+                  </small>
+                </div>
+              </div>
+
+              <div class="cnt-txt">
+                <label class="lbl-txt">Pequeña descripción de tu mascota</label>
+                <input
+                  type="text"
+                  class="form-control inp-desc inp-txt"
+                  name="description"
+                  id="field_description"
+                  data-cy="description"
+                  formControlName="description"
+                />
+                <div
+                  *ngIf="
+                    editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)
+                  "
+                >
+                  <small class="form-text text-danger alert-txt" *ngIf="editForm.get('description')?.errors?.required">
+                    Este campo es requerido
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="cnt-row2">
+              <div class="cnt-txt">
+                <div
+                  *ngIf="hasMatch"
+                  class="disabled-tooltip"
+                  data-tooltip="Estos campos están deshabilitados porque ya tienes contratos generados"
+                >
+                  <p></p>
+                </div>
+                <label class="lbl-txt" for="field_petType">Tipo de mascota</label>
+                <select class="form-control" name="petType" formControlName="petType" id="field_petType" data-cy="petType">
+                  <option [ngValue]="null">{{ 'furryMatchApp.PetType.null' | translate }}</option>
+                  <option *ngFor="let petType of petTypeValues" [value]="petType">
+                    {{ 'furryMatchApp.PetType.' + petType | translate }}
+                  </option>
+                </select>
+                <div *ngIf="editForm.get('petType')!.invalid && (editForm.get('petType')!.dirty || editForm.get('petType')!.touched)">
+                  <small class="form-text text-danger alert-txt" *ngIf="editForm.get('petType')?.errors?.required">
+                    Este campo es requerido
+                  </small>
+                </div>
+              </div>
+
+              <div class="cnt-txt">
+                <div
+                  *ngIf="hasMatch"
+                  class="disabled-tooltip"
+                  data-tooltip="Estos campos están deshabilitados porque ya tienes contratos generados"
+                >
+                  <p></p>
+                </div>
+                <label class="form-label lbl-txt">Raza</label>
+                <select class="form-control" id="field_breed" formControlName="breed">
+                  <option [ngValue]="null"></option>
+                  <option *ngFor="let breed of filteredBreedsSharedCollection" [ngValue]="breed">{{ breed.breed }}</option>
+                </select>
+              </div>
+
+              <div class="cnt-txt">
+                <div
+                  *ngIf="hasMatch"
+                  class="disabled-tooltip"
+                  data-tooltip="Estos campos están deshabilitados porque ya tienes contratos generados"
+                >
+                  <p></p>
+                </div>
+                <label class="form-label lbl-txt" for="field_sex">Sexo</label>
+                <select class="form-control" name="sex" formControlName="sex" id="field_sex" data-cy="sex">
+                  <option [ngValue]="null">{{ 'furryMatchApp.Sex.null' | translate }}</option>
+                  <option *ngFor="let sex of sexValues" [value]="sex">{{ 'furryMatchApp.Sex.' + sex | translate }}</option>
+                </select>
+                <div *ngIf="editForm.get('sex')!.invalid && (editForm.get('sex')!.dirty || editForm.get('sex')!.touched)">
+                  <small class="form-text text-danger alert-txt" *ngIf="editForm.get('sex')?.errors?.required">
+                    Este campo es requerido.
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="cnt-row3">
+              <div class="cnt-orange">
+                <div
+                  *ngIf="hasMatch"
+                  class="disabled-tooltip"
+                  data-tooltip="Estos campos están deshabilitados porque ya tienes contratos generados"
+                >
+                  <p></p>
+                </div>
+                <div class="cnt-orange-row1">
+                  <p class="txt-disc">
+                    <mark class="txt-disc-orange">¿Tu objetivo es cruzar a tu mascota?&nbsp;</mark>
+                    Entonces llená estos datos adicionales, son importantes para encontrarle su pareja ideal. Si solo estás buscando
+                    amistad, no es necesario llenarlo. Recordá que podés agregarlos o modificarlos cuando querás en tu perfil personal.
+                  </p>
+                </div>
+                <div class="cnt-orange-row2">
+                  <div class="cbox-wrapper">
+                    <input
+                      type="checkbox"
+                      class="form-check"
+                      name="pedigree"
+                      id="field_pedigree"
+                      data-cy="pedigree"
+                      formControlName="pedigree"
+                    />
+                    <label class="cbox-label" for="field_pedigree">¿Tu mascota cuenta con pedigrí?</label>
+                  </div>
+
+                  <div class="cbox-wrapper">
+                    <input
+                      type="checkbox"
+                      class="form-check"
+                      name="tradePups"
+                      id="field_tradePups"
+                      data-cy="tradePups"
+                      formControlName="tradePups"
+                    />
+                    <label class="cbox-label" for="field_tradePups">¿Deseas negociar la repartición de las crias?</label>
+                  </div>
+                </div>
+                <div class="cnt-orange-row3">
+                  <div class="cbox-wrapper">
+                    <input
+                      type="checkbox"
+                      class="form-check"
+                      name="tradeMoney"
+                      id="field_tradeMoney"
+                      data-cy="tradeMoney"
+                      formControlName="tradeMoney"
+                    />
+                    <label class="cbox-label" for="field_tradeMoney">¿Deseas cobrar dinero por el cruce de las mascotas?</label>
+                  </div>
+
+                  <div class="cbox-wrapper">
+                    <input
+                      type="number"
+                      class="form-control inp-ammount"
+                      name="desireAmmount"
+                      id="field_desireAmmount"
+                      data-cy="desireAmmount"
+                      formControlName="desireAmmount"
+                    />
+                    <label class="form-label" for="field_desireAmmount">Monto:</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <jhi-alert-error></jhi-alert-error>
+            </div>
+            <div>
+              <button type="submit" id="save-entity" data-cy="entityCreateSaveButton" class="btn btn-blue">
+                <span>Confirmar</span>
+              </button>
+            </div>
+            <div *ngIf="update" class="delete-text">
+              <span (click)="delete()">Eliminar mascota </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

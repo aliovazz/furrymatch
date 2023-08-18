@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contract">
+      <h2 data-cy="contractDetailsHeading"><span jhiTranslate="furryMatchApp.contract.detail.title">Contract</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contract.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.contract.tradeMoney">Trade Money</span></dt>
+        <dd>
+          <span>{{ contract.tradeMoney }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.contract.tradePups">Trade Pups</span></dt>
+        <dd>
+          <span>{{ contract.tradePups }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.contract.pedigree">Pedigree</span></dt>
+        <dd>
+          <span>{{ contract.pedigree }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.contract.otherNotes">Other Notes</span></dt>
+        <dd>
+          <span>{{ contract.otherNotes }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.contract.contractDate">Contract Date</span></dt>
+        <dd>
+          <span>{{ contract.contractDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contract', contract.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323005402",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "pet",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "petType",
+      "fieldType": "PetType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Perro,Gato"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sex",
+      "fieldType": "Sex",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Hembra,Macho"
+    },
+    {
+      "fieldName": "tradeMoney",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tradePups",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "pedigree",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "desireAmmount",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Pet",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "photo",
+      "otherEntityRelationshipName": "pet",
+      "relationshipName": "photo",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "likee",
+      "otherEntityRelationshipName": "firstPet",
+      "relationshipName": "firstLikee",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "likee",
+      "otherEntityRelationshipName": "secondPet",
+      "relationshipName": "secondLikee",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "owner",
+      "otherEntityRelationshipName": "pet",
+      "relationshipName": "owner",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "breed",
+      "otherEntityRelationshipName": "pet",
+      "relationshipName": "breed",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "searchCriteria",
+      "otherEntityRelationshipName": "pet",
+      "relationshipName": "searchCriteria",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

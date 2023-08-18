@@ -1,0 +1,47 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323005802",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "likee",
+  "fields": [
+    {
+      "fieldName": "likeState",
+      "fieldType": "LikeType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Like,Dislike"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Likee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "firstLiked",
+      "relationshipName": "firstMatch",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "secondLiked",
+      "relationshipName": "secondMatch",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pet",
+      "otherEntityRelationshipName": "firstLikee",
+      "relationshipName": "firstPet",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "pet",
+      "otherEntityRelationshipName": "secondLikee",
+      "relationshipName": "secondPet",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

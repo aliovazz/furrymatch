@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="SearchCriteriaHeading">
+    <span jhiTranslate="furryMatchApp.searchCriteria.home.title">Search Criteria</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="furryMatchApp.searchCriteria.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-search-criteria"
+        [routerLink]="['/search-criteria/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="furryMatchApp.searchCriteria.home.createLabel"> Create a new Search Criteria </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="searchCriteria?.length === 0">
+    <span jhiTranslate="furryMatchApp.searchCriteria.home.notFound">No Search Criteria found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="searchCriteria && searchCriteria.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="filterType">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.filterType">Filter Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="breed">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.breed">Breed</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tradePups">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.tradePups">Trade Pups</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sex">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.sex">Sex</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pedigree">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.pedigree">Pedigree</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tradeMoney">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.tradeMoney">Trade Money</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="provice">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.provice">Provice</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="canton">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.canton">Canton</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="district">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.district">District</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="objective">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.objective">Objective</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pet.id">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.searchCriteria.pet">Pet</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let searchCriteria of searchCriteria; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/search-criteria', searchCriteria.id, 'view']">{{ searchCriteria.id }}</a>
+          </td>
+          <td>{{ searchCriteria.filterType }}</td>
+          <td>{{ searchCriteria.breed }}</td>
+          <td>{{ searchCriteria.tradePups }}</td>
+          <td jhiTranslate="{{ 'furryMatchApp.Sex.' + searchCriteria.sex }}">{{ searchCriteria.sex }}</td>
+          <td>{{ searchCriteria.pedigree }}</td>
+          <td>{{ searchCriteria.tradeMoney }}</td>
+          <td>{{ searchCriteria.provice }}</td>
+          <td>{{ searchCriteria.canton }}</td>
+          <td>{{ searchCriteria.district }}</td>
+          <td>{{ searchCriteria.objective }}</td>
+          <td>
+            <div *ngIf="searchCriteria.pet">
+              <a [routerLink]="['/pet', searchCriteria.pet.id, 'view']">{{ searchCriteria.pet.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/search-criteria', searchCriteria.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/search-criteria', searchCriteria.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(searchCriteria)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="searchCriteria && searchCriteria.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

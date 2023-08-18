@@ -1,0 +1,397 @@
+<div class="main-content">
+  <nav data-cy="navbar" class="navbar">
+    <div class="container-fluid">
+      <div class="cnt-logo">
+        <!--        <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">-->
+        <img src="../content/images/LogoFullBlueHorizontal.png" class="img-logo-index" />
+        <!--      <span class="navbar-version">{{ version }}</span>-->
+        <!--        </a>-->
+        <a
+          class="navbar-toggler d-lg-none"
+          href="javascript:void(0);"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          (click)="toggleNavbar()"
+        >
+          <!--      <fa-icon icon="bars"></fa-icon>-->
+        </a>
+      </div>
+
+      <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="account !== null">
+        <ul class="navbar-nav ms-auto">
+          <!--        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">-->
+          <!--          <a class="nav-link" routerLink="/" (click)="collapseNavbar()">-->
+          <!--            <span>-->
+          <!--              <fa-icon icon="home"></fa-icon>-->
+          <!--              <span jhiTranslate="global.menu.home">Home</span>-->
+          <!--            </span>-->
+          <!--          </a>-->
+          <!--        </li>-->
+          <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+          <!--        <li-->
+          <!--          *ngSwitchCase="true"-->
+          <!--          ngbDropdown-->
+          <!--          class="nav-item dropdown pointer"-->
+          <!--          display="dynamic"-->
+          <!--          routerLinkActive="active"-->
+          <!--          [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--        >-->
+          <!--          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">-->
+          <!--            <span>-->
+          <!--              <fa-icon icon="th-list"></fa-icon>-->
+          <!--              <span jhiTranslate="global.menu.entities.main">Entities</span>-->
+          <!--            </span>-->
+          <!--          </a>-->
+          <!--          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="owner"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.owner">Owner</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="pet"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.pet">Pet</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="photo"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.photo">Photo</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="breed"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.breed">Breed</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="search-criteria"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.searchCriteria">Search Criteria</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="likee"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.likee">Likee</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="match"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.match">Match</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="contract"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.contract">Contract</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!--            <li>-->
+          <!--              <a-->
+          <!--                class="dropdown-item"-->
+          <!--                routerLink="chat"-->
+          <!--                routerLinkActive="active"-->
+          <!--                [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                (click)="collapseNavbar()"-->
+          <!--              >-->
+          <!--                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>-->
+          <!--                <span jhiTranslate="global.menu.entities.chat">Chat</span>-->
+          <!--              </a>-->
+          <!--            </li>-->
+          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+          <!--          </ul>-->
+          <!--        </li>-->
+
+          <!--        Admin menu-->
+
+          <div class="cnt-sections">
+            <li
+              *jhiHasAnyAuthority="'ROLE_ADMIN'"
+              class="nav-item dropdown pointer"
+              display="dynamic"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a
+                class="nav-link dropdown-toggle"
+                href="javascript:void(0);"
+                id="admin-menu"
+                data-cy="adminMenu"
+                (click)="toggleAdminDropdown($event)"
+              >
+                <span>
+                  <fa-icon icon="users-cog" class="user-icon" id="user-icon"></fa-icon>
+                </span>
+              </a>
+              <ul
+                class="custom-dropdown-menu"
+                id="custom-dropdown-menu-admin"
+                aria-labelledby="admin-menu"
+                [ngClass]="{ show: adminMenuIsOpen }"
+                (mouseleave)="hideAdminDropdown()"
+              >
+                <li>
+                  <a class="dropdown-item" routerLink="admin/user-management" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="users" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.userManagement">User management</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="tachometer-alt" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.metrics">Metrics</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="admin/health" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="heart" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.health">Health</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="admin/configuration" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="cogs" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.configuration">Configuration</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="admin/logs" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="tasks" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.logs">Logs</span>
+                  </a>
+                </li>
+                <li *ngIf="openAPIEnabled">
+                  <a class="dropdown-item" routerLink="admin/docs" routerLinkActive="active" (click)="collapseNavbar()">
+                    <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
+                    <span jhiTranslate="global.menu.admin.apidocs">API</span>
+                  </a>
+                </li>
+                <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+              </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
+              <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
+                <span>
+                  <fa-icon icon="flag"></fa-icon>
+                  <span jhiTranslate="global.menu.language">Language</span>
+                </span>
+              </a>
+              <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
+                <li *ngFor="let language of languages">
+                  <a
+                    class="dropdown-item"
+                    [jhiActiveMenu]="language"
+                    href="javascript:void(0);"
+                    (click)="changeLanguage(language); collapseNavbar()"
+                    >{{ language | findLanguageFromKey }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!--        Contracts menu-->
+
+            <li
+              *ngIf="account && shouldShowIcons"
+              class="nav-item dropdown-toggle"
+              display="dynamic"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <div
+                class="nav-item"
+                (mouseenter)="isHoveringContract = true; updateContractIcon()"
+                (mouseleave)="isHoveringContract = false; updateContractIcon()"
+              >
+                <a class="nav-link" [routerLink]="['contract']" (click)="collapseNavbar()" title="Mis contratos">
+                  <img [src]="currentImgContract" class="btn-icon" />
+                </a>
+              </div>
+            </li>
+
+            <!--        Matches menu-->
+
+            <li
+              *ngIf="account && shouldShowIcons"
+              class="nav-item dropdown-toggle"
+              display="dynamic"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <div
+                class="nav-item"
+                (mouseenter)="isHoveringMatches = true; updateMatchIcon()"
+                (mouseleave)="isHoveringMatches = false; updateMatchIcon()"
+              >
+                <a class="nav-link" [routerLink]="['match']" (click)="collapseNavbar()" title="Mis matches">
+                  <img [src]="currentImgMatch" class="btn-icon" />
+                </a>
+              </div>
+            </li>
+
+            <!--        Finder menu-->
+
+            <li
+              *ngIf="account && shouldShowIcons"
+              class="nav-item dropdown-toggle"
+              display="dynamic"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <div
+                class="nav-item"
+                (mouseenter)="isHoveringFind = true; updateFindIcon()"
+                (mouseleave)="isHoveringFind = false; updateFindIcon()"
+              >
+                <a class="nav-link" [routerLink]="['pet/search']" (click)="collapseNavbar()" title="Mis filtros">
+                  <img [src]="currentImgFind" class="btn-icon" />
+                </a>
+              </div>
+            </li>
+
+            <!--        Chat menu-->
+
+            <li
+              *ngIf="account && shouldShowIcons"
+              class="nav-item dropdown-toggle"
+              display="dynamic"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <div
+                class="nav-item"
+                (mouseenter)="isHoveringChat = true; updateChatIcon()"
+                (mouseleave)="isHoveringChat = false; updateChatIcon()"
+              >
+                <a class="nav-link" [routerLink]="['chat']" (click)="collapseNavbar()" title="Mis chats">
+                  <img [src]="currentImgChat" class="btn-icon" />
+                </a>
+              </div>
+            </li>
+
+            <!--        User menu-->
+
+            <li class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a
+                class="nav-link dropdown-toggle"
+                href="javascript:void(0);"
+                id="account-menu"
+                data-cy="accountMenu"
+                (click)="toggleUserDropdown($event); updateUserIcon()"
+                (mouseenter)="currentImgProfile = activeImgProfile"
+                (mouseleave)="updateUserIcon()"
+              >
+                <img [src]="currentImgProfile" class="btn-icon btn-icon-user" />
+              </a>
+              <ul
+                class="custom-dropdown-menu-user"
+                id="custom-dropdown-menu-user"
+                aria-labelledby="account-menu"
+                [ngClass]="{ show: userMenuIsOpen }"
+                (mouseleave)="hideUserDropdown()"
+              >
+                <li *ngSwitchCase="true">
+                  <a class="dropdown-item" routerLink="pet" routerLinkActive="active" (click)="collapseNavbar()">
+                    <span>Mis mascotas</span>
+                  </a>
+                </li>
+
+                <li *ngSwitchCase="true">
+                  <a
+                    class="dropdown-item"
+                    routerLink="account/password"
+                    routerLinkActive="active"
+                    (click)="collapseNavbar()"
+                    data-cy="passwordItem"
+                  >
+                    <span>Cambiar contraseña</span>
+                  </a>
+                </li>
+
+                <li *ngSwitchCase="true">
+                  <a class="dropdown-item" (click)="logout()" id="logout" data-cy="logout">
+                    <!--                <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>-->
+                    <span>Salir</span>
+                  </a>
+                </li>
+                <li *ngSwitchCase="false">
+                  <a class="dropdown-item" (click)="login()" id="login" data-cy="login">
+                    <!--                <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>-->
+                    <span>Ingresar</span>
+                  </a>
+                </li>
+                <li *ngSwitchCase="false">
+                  <a
+                    class="dropdown-item"
+                    routerLink="account/register"
+                    routerLinkActive="active"
+                    (click)="collapseNavbar()"
+                    data-cy="register"
+                  >
+                    <span>¡Registrate!</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

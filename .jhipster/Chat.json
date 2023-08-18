@@ -1,0 +1,35 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323010102",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "chat",
+  "fields": [
+    {
+      "fieldName": "dateChat",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stateChat",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Chat",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "chat",
+      "relationshipName": "match",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

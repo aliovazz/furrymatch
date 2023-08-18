@@ -1,0 +1,206 @@
+<div>
+  <h2 id="page-heading" data-cy="OwnerHeading">
+    <span jhiTranslate="furryMatchApp.owner.home.title">Owners</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="furryMatchApp.owner.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-owner"
+        [routerLink]="['/owner/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="furryMatchApp.owner.home.createLabel"> Create a new Owner </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="owners?.length === 0">
+    <span jhiTranslate="furryMatchApp.owner.home.notFound">No Owners found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="owners && owners.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="firstName">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.firstName">First Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="secondName">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.secondName">Second Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="firstLastName">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.firstLastName">First Last Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="secondLastName">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.secondLastName">Second Last Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="photo">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.photo">Photo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="identityNumber">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.identityNumber">Identity Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.address">Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="province">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.province">Province</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="canton">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.canton">Canton</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="district">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.district">District</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="otp">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.otp">Otp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdAt">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.createdAt">Created At</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updatedAt">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.updatedAt">Updated At</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.id">
+            <div class="d-flex">
+              <span jhiTranslate="furryMatchApp.owner.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let owner of owners; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/owner', owner.user_id, 'view']">{{ owner.user_id }}</a>
+          </td>
+          <td>{{ owner.firstName }}</td>
+          <td>{{ owner.secondName }}</td>
+          <td>{{ owner.firstLastName }}</td>
+          <td>{{ owner.secondLastName }}</td>
+          <td>{{ owner.phoneNumber }}</td>
+          <td>{{ owner.photo }}</td>
+          <td>{{ owner.identityNumber }}</td>
+          <td>{{ owner.address }}</td>
+          <td>{{ owner.province }}</td>
+          <td>{{ owner.canton }}</td>
+          <td>{{ owner.district }}</td>
+          <td>{{ owner.otp }}</td>
+          <td>{{ owner.createdAt | formatMediumDate }}</td>
+          <td>{{ owner.updatedAt | formatMediumDate }}</td>
+          <td>
+            {{ owner.user?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/owner', owner.user_id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/owner', owner.user_id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(owner)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="owners && owners.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

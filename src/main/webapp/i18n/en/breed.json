@@ -1,0 +1,26 @@
+{
+  "furryMatchApp": {
+    "breed": {
+      "home": {
+        "title": "Breeds",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Breed",
+        "createOrEditLabel": "Create or edit a Breed",
+        "notFound": "No Breeds found"
+      },
+      "created": "A new Breed is created with identifier {{ param }}",
+      "updated": "A Breed is updated with identifier {{ param }}",
+      "deleted": "A Breed is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Breed {{ id }}?"
+      },
+      "detail": {
+        "title": "Breed"
+      },
+      "id": "ID",
+      "breed": "Breed",
+      "breedType": "Breed Type",
+      "pet": "Pet"
+    }
+  }
+}

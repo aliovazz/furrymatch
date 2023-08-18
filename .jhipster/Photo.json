@@ -1,0 +1,33 @@
+{
+  "applications": ["FurryMatch"],
+  "changelogDate": "20230323005502",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "photo",
+  "fields": [
+    {
+      "fieldName": "uploadDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photoUrl",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Photo",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "pet",
+      "otherEntityRelationshipName": "photo",
+      "relationshipName": "pet",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

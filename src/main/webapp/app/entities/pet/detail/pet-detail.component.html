@@ -1,0 +1,120 @@
+<div class="cnt-imgs">
+  <div class="cnt-big" *ngIf="petImages.length > 0">
+    <img [src]="getOriginalImageUrl(petImages[0])" class="img-big-index" />
+  </div>
+  <div class="cnt-galeria">
+    <div class="txt-galeria">
+      <p class="txt-titular">Galería</p>
+      <a href="javascript:void(0)" class="txt-ver" (click)="openGallery()">Ver más</a>
+    </div>
+    <ng-container *ngIf="petImages.length > 1">
+      <div class="cnt-med">
+        <img [src]="getOriginalImageUrl(petImages[1])" class="img-med-index" />
+        <img [src]="getOriginalImageUrl(petImages[2])" class="img-med-index" *ngIf="petImages.length > 2" />
+      </div>
+
+      <div class="cnt-med">
+        <img [src]="getOriginalImageUrl(petImages[3])" class="img-small-index" *ngIf="petImages.length > 3" />
+        <img [src]="getOriginalImageUrl(petImages[4])" class="img-small-index" *ngIf="petImages.length > 4" />
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="pet">
+  <div class="cnt-info">
+    <div class="cnt-info-pet-big">
+      <div class="cnt-info-pet">
+        <div *ngIf="isOwnProfile" class="cnt-btns-pet">
+          <a [routerLink]="['/pet', pet.id, 'edit']" title="Eliminar mascota">
+            <img src="../content/images/delete_icon.png" />
+          </a>
+          <a [routerLink]="['/pet', pet.id, 'edit']" title="Actualizar mascota">
+            <img src="../content/images/update_icon.png" />
+          </a>
+          <div class="upd-hover" (click)="updateSearchCriteria()" title="Actualizar filtros">
+            <img src="../content/images/btn_filters.png" />
+          </div>
+        </div>
+        <dl>
+          <div class="cnt-name cnt-pet-space">
+            <dd>
+              <p class="info-main-title">{{ pet.name }}</p>
+            </dd>
+
+            <div class="txt-datos-pet">
+              <dd>
+                <div *ngIf="pet.breed">
+                  <p class="info-input">{{ pet.breed.breed }}</p>
+                </div>
+              </dd>
+              <p class="info-input">,&nbsp;</p>
+              <p class="info-input">{{ pet.sex }}</p>
+            </div>
+          </div>
+
+          <div class="cnt-location cnt-pet-space">
+            <p class="txt-titular">Locación</p>
+            <div class="txt-datos-pet">
+              <div *ngIf="selectedCanton">
+                <p class="info-input">{{ selectedCanton.name }}</p>
+              </div>
+              <p class="info-input">,&nbsp;</p>
+              <div *ngIf="selectedProvince">
+                <p class="info-input">{{ selectedProvince.name }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cnt-about cnt-pet-space">
+            <p class="txt-titular">Sobre mi</p>
+            <p class="info-input-about">{{ pet.description }}</p>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="cnt-info-user-fth">
+      <div class="cnt-info-user">
+        <div class="cnt-name">
+          <div *ngIf="isOwnProfile" class="cnt-btns-pet">
+            <a [routerLink]="['/account/settings']" title="Eliminar usuario">
+              <img src="../content/images/delete_icon.png" />
+            </a>
+            <a [routerLink]="['/account/settings']" title="Actualizar usuario">
+              <img src="../content/images/update_icon.png" />
+            </a>
+          </div>
+          <p class="info-main-title">Mi dueño(a)</p>
+          <div class="txt-datos-pet">
+            <div *ngIf="pet.owner">
+              <p class="info-input-owner">{{ pet.owner['firstName'] }}</p>
+            </div>
+            <p class="info-input-owner">&nbsp;</p>
+            <div *ngIf="pet.owner">
+              <p class="info-input-owner">{{ pet.owner['firstLastName'] }}</p>
+            </div>
+          </div>
+          <div *ngIf="pet.owner">
+            <p class="info-input-owner">{{ pet.owner['phoneNumber'] }}</p>
+          </div>
+          <div *ngIf="pet.user">
+            <p class="info-input-owner">{{ pet.user['email'] }}</p>
+          </div>
+        </div>
+        <div style="border-radius: 15px; overflow: hidden">
+          <advanced-image [cldImg]="ownerImage" class="img-photo"></advanced-image>
+        </div>
+      </div>
+      <div>
+        <button (click)="goToChat(pet.id)" class="btn-blue btn" type="submit">
+          {{ isOwnProfile ? 'Ir a la sección de mensajes' : '¡Chateá y conocé a tu match!' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showGallery">
+  <jhi-gallery [images]="imageUrls" [visible]="showGallery" (close)="onCloseGallery()"></jhi-gallery>
+</div>

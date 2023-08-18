@@ -1,0 +1,66 @@
+.login-wrapper {
+  margin: 2.063rem auto;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+}
+
+.img-logo-blue {
+  margin-top: var(--margin-md);
+}
+
+.title {
+  font: var(--typo-title);
+  color: var(--clr-orange);
+  margin-top: var(--margin-md);
+  margin-bottom: var(--margin-md-small);
+}
+
+.text,
+.text-cuenta {
+  font: var(--typo-global);
+}
+
+.text-cuenta {
+  margin: 0.313rem;
+}
+
+.cnt-princ {
+  text-align: center;
+}
+
+.text-link {
+  color: var(--clr-orange);
+  font: var(--typo-global-bold);
+}
+
+.cnt-ingresa {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--margin-min);
+}
+
+.btn-blue {
+  margin-top: 20px;
+  padding: 8px 25px;
+  background-color: var(--clr-blue);
+  font: var(--typo-button);
+  color: var(--clr-white);
+  transition: background-color ease-in 300ms;
+}
+
+.btn-blue:hover:enabled {
+  background-color: var(--clr-orange);
+}
+
+.form-control {
+  font: var(--typo-global);
+  border-color: var(--clr-grey);
+}
+
+.first-inp {
+  margin-bottom: 10px;
+}

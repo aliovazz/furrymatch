@@ -1,0 +1,29 @@
+{
+  "furryMatchApp": {
+    "match": {
+      "home": {
+        "title": "Mis matches",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Match",
+        "createOrEditLabel": "Create or edit a Match",
+        "notFound": "No Matches found"
+      },
+      "created": "A new Match is created with identifier {{ param }}",
+      "updated": "A Match is updated with identifier {{ param }}",
+      "deleted": "A Match is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Match {{ id }}?"
+      },
+      "detail": {
+        "title": "Match"
+      },
+      "id": "ID",
+      "notifyMatch": "Notify Match",
+      "dateMatch": "Date Match",
+      "contract": "Contract",
+      "chat": "Chat",
+      "firstLiked": "First Liked",
+      "secondLiked": "Second Liked"
+    }
+  }
+}

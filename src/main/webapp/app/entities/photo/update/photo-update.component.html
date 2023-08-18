@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-photo-heading" data-cy="PhotoCreateUpdateHeading" jhiTranslate="furryMatchApp.photo.home.createOrEditLabel">
+        Create or edit a Photo
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.photo.uploadDate" for="field_uploadDate">Upload Date</label>
+          <div class="input-group">
+            <input
+              id="field_uploadDate"
+              data-cy="uploadDate"
+              type="text"
+              class="form-control"
+              name="uploadDate"
+              ngbDatepicker
+              #uploadDateDp="ngbDatepicker"
+              formControlName="uploadDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="uploadDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('uploadDate')!.invalid && (editForm.get('uploadDate')!.dirty || editForm.get('uploadDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uploadDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.photo.photoUrl" for="field_photoUrl">Photo Url</label>
+          <input type="text" class="form-control" name="photoUrl" id="field_photoUrl" data-cy="photoUrl" formControlName="photoUrl" />
+          <div *ngIf="editForm.get('photoUrl')!.invalid && (editForm.get('photoUrl')!.dirty || editForm.get('photoUrl')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('photoUrl')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.photo.pet" for="field_pet">Pet</label>
+          <select class="form-control" id="field_pet" data-cy="pet" name="pet" formControlName="pet" [compareWith]="comparePet">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="petOption" *ngFor="let petOption of petsSharedCollection">{{ petOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

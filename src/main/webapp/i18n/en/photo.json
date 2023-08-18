@@ -1,0 +1,26 @@
+{
+  "furryMatchApp": {
+    "photo": {
+      "home": {
+        "title": "Photos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Photo",
+        "createOrEditLabel": "Create or edit a Photo",
+        "notFound": "No Photos found"
+      },
+      "created": "A new Photo is created with identifier {{ param }}",
+      "updated": "A Photo is updated with identifier {{ param }}",
+      "deleted": "A Photo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Photo {{ id }}?"
+      },
+      "detail": {
+        "title": "Photo"
+      },
+      "id": "ID",
+      "uploadDate": "Upload Date",
+      "photoUrl": "Photo Url",
+      "pet": "Pet"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "furryMatchApp": {
+    "contract": {
+      "home": {
+        "title": "Mis contratos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contract",
+        "createOrEditLabel": "Create or edit a Contract",
+        "notFound": "No Contracts found"
+      },
+      "created": "A new Contract is created with identifier {{ param }}",
+      "updated": "A Contract is updated with identifier {{ param }}",
+      "deleted": "A Contract is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contract {{ id }}?"
+      },
+      "detail": {
+        "title": "Contract"
+      },
+      "id": "ID",
+      "tradeMoney": "Trade Money",
+      "tradePups": "Trade Pups",
+      "pedigree": "Pedigree",
+      "otherNotes": "Other Notes",
+      "contractDate": "Contract Date",
+      "match": "Match"
+    }
+  }
+}

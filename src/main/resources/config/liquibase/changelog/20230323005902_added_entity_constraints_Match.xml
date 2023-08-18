@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Match.
+    -->
+    <changeSet id="20230323005902-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="contract_id"
+                                 baseTableName="jhi_match"
+                                 constraintName="fk_jhi_match__contract_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"/>
+
+        <addForeignKeyConstraint baseColumnNames="first_liked_id"
+                                 baseTableName="jhi_match"
+                                 constraintName="fk_jhi_match__first_liked_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="likee"/>
+
+        <addForeignKeyConstraint baseColumnNames="second_liked_id"
+                                 baseTableName="jhi_match"
+                                 constraintName="fk_jhi_match__second_liked_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="likee"/>
+    </changeSet>
+</databaseChangeLog>

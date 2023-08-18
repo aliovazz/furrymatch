@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="floatType" value="float" dbms="mysql"/>
+    <property name="clobType" value="clob" dbms="mysql"/>
+    <property name="blobType" value="longblob" dbms="mysql"/>
+    <property name="uuidType" value="varchar(36)" dbms="mysql"/>
+    <property name="datetimeType" value="datetime(6)" dbms="mysql"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005302_added_entity_Owner.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005402_added_entity_Pet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005502_added_entity_Photo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005602_added_entity_Breed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005702_added_entity_SearchCriteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005802_added_entity_Likee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005902_added_entity_Match.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323010002_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323010102_added_entity_Chat.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230323005302_added_entity_constraints_Owner.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005402_added_entity_constraints_Pet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005502_added_entity_constraints_Photo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005702_added_entity_constraints_SearchCriteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005802_added_entity_constraints_Likee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323005902_added_entity_constraints_Match.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230323010102_added_entity_constraints_Chat.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

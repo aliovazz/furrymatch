@@ -1,0 +1,54 @@
+<div>
+  <div class="cnt-princ">
+    <div class="cnt-sec">
+      <div>
+        <img src="../content/images/blue_logo.png" class="img-logo-blue" />
+      </div>
+      <h1 class="title">Aquí está la media naranja de tu peludito</h1>
+      <p class="text">Ingresá tus datos:</p>
+    </div>
+    <div class="login-wrapper">
+      <div>
+        <div class="card-body">
+          <form class="form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="cnt-inputs">
+              <label class="lbl-txt">Correo electrónico</label>
+              <input
+                type="text"
+                class="form-control inp-txt first-inp"
+                name="username"
+                id="username"
+                formControlName="username"
+                #username
+                data-cy="username"
+              />
+            </div>
+
+            <div class="cnt-inputs">
+              <label class="lbl-txt">Contraseña</label>
+              <input
+                type="password"
+                class="form-control inp-txt"
+                name="password"
+                id="password"
+                formControlName="password"
+                data-cy="password"
+              />
+            </div>
+
+            <button type="submit" class="btn-blue btn" [disabled]="loginForm.invalid" data-cy="submit">Ingresar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="cnt-ingresa">
+      <p class="text-cuenta">¿No tenés una cuenta?</p>
+      <a routerLink="/account/register" class="text-link">Creá una aquí</a>
+    </div>
+    <div class="cnt-ingresa">
+      <p class="text-cuenta">¿Olvidaste tu contraseña?</p>
+      <a routerLink="/account/reset/request" class="text-link">Hacé click aquí</a>
+    </div>
+  </div>
+</div>

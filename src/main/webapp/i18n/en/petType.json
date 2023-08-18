@@ -1,0 +1,9 @@
+{
+  "furryMatchApp": {
+    "PetType": {
+      "null": "",
+      "Perro": "Perro",
+      "Gato": "Gato"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "furryMatchApp": {
+    "chat": {
+      "home": {
+        "title": "Mis chats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chat",
+        "createOrEditLabel": "Create or edit a Chat",
+        "notFound": "No Chats found"
+      },
+      "created": "A new Chat is created with identifier {{ param }}",
+      "updated": "A Chat is updated with identifier {{ param }}",
+      "deleted": "A Chat is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chat {{ id }}?"
+      },
+      "detail": {
+        "title": "Chat"
+      },
+      "id": "ID",
+      "dateChat": "Date Chat",
+      "message": "Message",
+      "stateChat": "State Chat",
+      "match": "Match"
+    }
+  }
+}

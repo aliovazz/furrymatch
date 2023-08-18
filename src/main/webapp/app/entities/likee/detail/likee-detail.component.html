@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="likee">
+      <h2 data-cy="likeeDetailsHeading"><span jhiTranslate="furryMatchApp.likee.detail.title">Likee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ likee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.likee.likeState">Like State</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'furryMatchApp.LikeType.' + likee.likeState }}">{{ likee.likeState }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.likee.firstPet">First Pet</span></dt>
+        <dd>
+          <div *ngIf="likee.firstPet">
+            <a [routerLink]="['/pet', likee.firstPet.id, 'view']">{{ likee.firstPet.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.likee.secondPet">Second Pet</span></dt>
+        <dd>
+          <div *ngIf="likee.secondPet">
+            <a [routerLink]="['/pet', likee.secondPet.id, 'view']">{{ likee.secondPet.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/likee', likee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

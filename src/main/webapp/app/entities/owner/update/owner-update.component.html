@@ -1,0 +1,209 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-owner-heading" data-cy="OwnerCreateUpdateHeading" jhiTranslate="furryMatchApp.owner.home.createOrEditLabel">
+        Create or edit a Owner
+      </h2>
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.secondLastName" for="field_secondLastName">Second Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="secondLastName"
+            id="field_secondLastName"
+            data-cy="secondLastName"
+            formControlName="secondLastName"
+          />
+          <div
+            *ngIf="
+              editForm.get('secondLastName')!.invalid && (editForm.get('secondLastName')!.dirty || editForm.get('secondLastName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('secondLastName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="editForm.get('phoneNumber')!.invalid && (editForm.get('phoneNumber')!.dirty || editForm.get('phoneNumber')!.touched)">
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('phoneNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger alert-txt"
+              [hidden]="!editForm.get('phoneNumber')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.photo" for="field_photo">Photo</label>
+          <input type="text" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.identityNumber" for="field_identityNumber">Identity Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identityNumber"
+            id="field_identityNumber"
+            data-cy="identityNumber"
+            formControlName="identityNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('identityNumber')!.invalid && (editForm.get('identityNumber')!.dirty || editForm.get('identityNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('identityNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.address" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+          <div *ngIf="editForm.get('address')!.invalid && (editForm.get('address')!.dirty || editForm.get('address')!.touched)">
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('address')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.province" for="field_province">Province</label>
+          <input type="text" class="form-control" name="province" id="field_province" data-cy="province" formControlName="province" />
+          <div *ngIf="editForm.get('province')!.invalid && (editForm.get('province')!.dirty || editForm.get('province')!.touched)">
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('province')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.canton" for="field_canton">Canton</label>
+          <input type="text" class="form-control" name="canton" id="field_canton" data-cy="canton" formControlName="canton" />
+          <div *ngIf="editForm.get('canton')!.invalid && (editForm.get('canton')!.dirty || editForm.get('canton')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('canton')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.district" for="field_district">District</label>
+          <input type="text" class="form-control" name="district" id="field_district" data-cy="district" formControlName="district" />
+          <div *ngIf="editForm.get('district')!.invalid && (editForm.get('district')!.dirty || editForm.get('district')!.touched)">
+            <small
+              class="form-text text-danger alert-txt"
+              *ngIf="editForm.get('district')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.otp" for="field_otp">Otp</label>
+          <input type="text" class="form-control" name="otp" id="field_otp" data-cy="otp" formControlName="otp" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.createdAt" for="field_createdAt">Created At</label>
+          <div class="input-group">
+            <input
+              id="field_createdAt"
+              data-cy="createdAt"
+              type="text"
+              class="form-control"
+              name="createdAt"
+              ngbDatepicker
+              #createdAtDp="ngbDatepicker"
+              formControlName="createdAt"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdAtDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.updatedAt" for="field_updatedAt">Updated At</label>
+          <div class="input-group">
+            <input
+              id="field_updatedAt"
+              data-cy="updatedAt"
+              type="text"
+              class="form-control"
+              name="updatedAt"
+              ngbDatepicker
+              #updatedAtDp="ngbDatepicker"
+              formControlName="updatedAt"
+            />
+            <button type="button" class="btn btn-secondary" (click)="updatedAtDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="furryMatchApp.owner.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

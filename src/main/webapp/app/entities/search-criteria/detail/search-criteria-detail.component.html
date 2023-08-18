@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="searchCriteria">
+      <h2 data-cy="searchCriteriaDetailsHeading"><span jhiTranslate="furryMatchApp.searchCriteria.detail.title">Search Criteria</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ searchCriteria.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.filterType">Filter Type</span></dt>
+        <dd>
+          <span>{{ searchCriteria.filterType }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.breed">Breed</span></dt>
+        <dd>
+          <span>{{ searchCriteria.breed }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.tradePups">Trade Pups</span></dt>
+        <dd>
+          <span>{{ searchCriteria.tradePups }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.sex">Sex</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'furryMatchApp.Sex.' + searchCriteria.sex }}">{{ searchCriteria.sex }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.pedigree">Pedigree</span></dt>
+        <dd>
+          <span>{{ searchCriteria.pedigree }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.tradeMoney">Trade Money</span></dt>
+        <dd>
+          <span>{{ searchCriteria.tradeMoney }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.provice">Provice</span></dt>
+        <dd>
+          <span>{{ searchCriteria.provice }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.canton">Canton</span></dt>
+        <dd>
+          <span>{{ searchCriteria.canton }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.district">District</span></dt>
+        <dd>
+          <span>{{ searchCriteria.district }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.objective">Objective</span></dt>
+        <dd>
+          <span>{{ searchCriteria.objective }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.searchCriteria.pet">Pet</span></dt>
+        <dd>
+          <div *ngIf="searchCriteria.pet">
+            <a [routerLink]="['/pet', searchCriteria.pet.id, 'view']">{{ searchCriteria.pet.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/search-criteria', searchCriteria.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

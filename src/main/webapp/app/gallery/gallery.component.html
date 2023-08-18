@@ -1,0 +1,30 @@
+<div class="overlay">
+  <div *ngIf="visible">
+    <div class="gallery-modal-content">
+      <div class="cnt-btn-quit">
+        <span class="gallery-close" (click)="closeGallery()">
+          <img src="../content/images/btn_quit.png" />
+        </span>
+      </div>
+      <div class="cnt-princ">
+        <img
+          src="../content/images/btn_left.png"
+          class="gallery-prev-left"
+          (click)="previousImage()"
+          [style.pointer-events]="currentIndex === 0 ? 'none' : 'auto'"
+          [style.opacity]="currentIndex === 0 ? '0.5' : '1'"
+        />
+
+        <img [src]="images[currentIndex]" class="gallery-image" />
+
+        <img
+          src="../content/images/btn_right.png"
+          class="gallery-next-right"
+          (click)="nextImage()"
+          [style.pointer-events]="currentIndex === images.length - 1 ? 'none' : 'auto'"
+          [style.opacity]="currentIndex === images.length - 1 ? '0.5' : '1'"
+        />
+      </div>
+    </div>
+  </div>
+</div>

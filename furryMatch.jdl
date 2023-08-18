@@ -1,0 +1,137 @@
+
+application {
+ config {
+    baseName FurryMatch,
+    applicationType monolith,
+    packageName furrymatch,
+    authenticationType session,
+    devDatabaseType mysql,
+    prodDatabaseType mysql,
+    clientFramework angular,
+    buildTool maven
+  }
+  entities *
+}
+
+enum Sex {
+    Hembra, Macho
+}
+
+enum PetType {
+    Perro, Gato
+}
+
+enum LikeType {
+    Like, Dislike
+}
+
+entity Owner {
+	firstName String required,
+    secondName String,
+    firstLastName String required,
+    secondLastName String required,
+    phoneNumber Long required,
+    photo String,
+    identityNumber String required,
+    address String required,
+    province String required,
+    canton String required,
+    district String required,
+    otp String,
+    createdAt LocalDate,
+    updatedAt LocalDate,
+}
+
+entity Pet {
+    name String required,
+    petType PetType required,
+    description String required,
+    sex Sex required,
+    tradeMoney Boolean,
+    tradePups Boolean,
+    pedigree Boolean,
+    desireAmmount Double
+}
+
+entity Photo {
+	uploadDate LocalDate required,
+    photoUrl String required
+}
+
+entity Breed {
+	breed String required,
+    breedType String required
+}
+
+entity SearchCriteria {
+    filterType String required,
+    breed String,
+    tradePups String,
+    sex Sex,
+    pedigree String,
+    tradeMoney String,
+    provice String,
+    canton String,
+    district String,
+    objective String
+}
+
+entity Likee {
+	likeState LikeType required,
+}
+
+entity Match {
+	notifyMatch Boolean,
+    dateMatch LocalDate,
+}
+
+entity Contract {
+	tradeMoney String,
+    tradePups String,
+    pedigree String,
+    otherNotes String,
+    contractDate LocalDate,
+}
+
+entity Chat {
+	dateChat LocalDate,
+    message String,
+    stateChat String,
+}
+
+relationship OneToOne{
+Owner{user} to User
+}
+relationship OneToMany{
+Owner{pet} to Pet{owner}
+}
+relationship OneToMany{
+Pet{photo} to Photo{pet}
+}
+relationship OneToMany{
+Breed{pet} to Pet{breed}
+}
+relationship OneToMany{
+Match to Chat{match}
+}
+relationship OneToMany{
+Pet{firstLikee} to Likee{firstPet} 
+}
+relationship OneToMany{
+Pet{secondLikee} to Likee{secondPet} 
+}
+relationship OneToMany{
+Likee{firstMatch} to Match{firstLiked}
+}
+relationship OneToMany{
+Likee{secondMatch} to Match{secondLiked}
+}
+relationship ManyToOne{
+SearchCriteria{pet} to Pet{searchCriteria}
+}
+relationship OneToOne{
+Match{contract} to Contract{match}
+}
+paginate Owner,Pet,Photo,Breed,Likee,Match,Contract,Chat,SearchCriteria with pagination
+service Owner,Pet,Photo,Breed,Likee,Match,Contract,Chat,SearchCriteria with serviceClass
+    

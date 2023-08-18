@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="photo">
+      <h2 data-cy="photoDetailsHeading"><span jhiTranslate="furryMatchApp.photo.detail.title">Photo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ photo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.photo.uploadDate">Upload Date</span></dt>
+        <dd>
+          <span>{{ photo.uploadDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.photo.photoUrl">Photo Url</span></dt>
+        <dd>
+          <span>{{ photo.photoUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="furryMatchApp.photo.pet">Pet</span></dt>
+        <dd>
+          <div *ngIf="photo.pet">
+            <a [routerLink]="['/pet', photo.pet.id, 'view']">{{ photo.pet.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/photo', photo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
